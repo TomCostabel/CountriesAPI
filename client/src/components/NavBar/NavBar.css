@@ -1,0 +1,11 @@
+.navbar-container {
+    color: rgb(0, 0, 0);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #991f1f;
+    box-shadow: 0 0 10px 5px rgb(71, 71, 71);
+    margin-inline: auto;
+    height: 55px;
+}

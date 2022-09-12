@@ -1,0 +1,26 @@
+.container-card-detail {
+    margin-top: 150px;
+    margin-left: 160px;
+    gap: 30px;
+    display: inline-flex;
+    justify-content: space-around;
+    align-items: center;
+
+    border: 1px solid rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    border-radius: 3px;
+    width: 1100px;
+    height: 500px;
+
+    box-shadow: 22px 29px 34px -10px rgba(0, 0, 0, 0.75);
+}
+
+.container-detail {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    text-align: left;
+}
+
+/* .imagen-detail {
+} */
