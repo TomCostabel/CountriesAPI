@@ -1,4 +1,8 @@
-import { GET_ALL_COUNTRIES, GET_ALL_COUNTRIE_ID } from "../actions/index";
+import {
+    GET_ALL_COUNTRIES,
+    GET_ALL_COUNTRIE_ID,
+    SET_SORT,
+} from "../actions/index";
 
 const initialState = {
     countries: [],
@@ -15,6 +19,19 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 countrieDetail: action.payload,
+            };
+        case SET_SORT:
+            const sortedCountries =
+                action.payload === "ASC"
+                    ? state.countries.sort((a, b) =>
+                          b.name.localeCompare(a.name)
+                      )
+                    : state.countries.sort((a, b) =>
+                          a.name.localeCompare(b.name)
+                      );
+            return {
+                ...state,
+                countries: sortedCountries,
             };
 
         default:

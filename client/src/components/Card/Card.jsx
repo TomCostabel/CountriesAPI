@@ -9,7 +9,7 @@ export default function Card(props) {
                 <img className="imagen" src={props.image} alt="Flag Countrie" />
             </Link>
             <h3>{props.name}</h3>
-            <h5>{props.continent}</h5>
+            <h5>Continent: {props.continent}</h5>
         </div>
     );
 }

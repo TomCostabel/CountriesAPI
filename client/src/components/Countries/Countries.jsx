@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllCountries } from "../../redux/actions/index.js";
+import { getAllCountries, sortBy } from "../../redux/actions/index.js";
 import Card from "../Card/Card";
 import "../Countries/Countries.css";
 import NavBar from "../NavBar/NavBar.jsx";
 import Pagination from "../Pagination/Pagination.jsx";
+
 export default function Countries() {
     //-----------------------------MY STATES---------------------------------------------->
 
@@ -14,13 +15,15 @@ export default function Countries() {
     const [datos, setDatos] = useState([]);
     const [paisesActuales, setPaisesActuales] = useState([]);
     //----------------------------------------
-    const ITEMS_X_PAGE = 10;
+
+    const ITEMS_X_PAGE = currentPage === 0 ? 9 : 10;
     const dispatch = useDispatch();
     //-----------------------------USE EFFECTS------------------------------------------->
 
     useEffect(() => {
         if (paises.length && !datos.length) setDatos(paises);
         if (!datos.length) dispatch(getAllCountries());
+
         setPaisesActuales(
             datos.slice(
                 currentPage * ITEMS_X_PAGE,
@@ -39,7 +42,7 @@ export default function Countries() {
 
         const firstIndex = nextPage * ITEMS_X_PAGE;
 
-        if (paisesActuales.length < 10) return;
+        if (paisesActuales.length < 10 && currentPage !== 0) return;
         setPaisesActuales(
             [...datos].slice(firstIndex, firstIndex + ITEMS_X_PAGE)
         );
@@ -71,11 +74,25 @@ export default function Countries() {
             />
         );
     });
-    console.log("esto es allCountries...", allTheCountries);
+    // console.log("esto es allCountries...", allTheCountries);
     return (
         <div>
             <NavBar />
-            {/* <div className="container-cards">{allTheCountries}</div> */}
+
+            <div>
+                Filtrado alfabetico
+                <select
+                    onClick={(e) => {
+                        dispatch(sortBy(e.target.value));
+                    }}
+                    onChange={() => setCurrentPage(0)}
+                >
+                    <option value="">...</option>
+                    <option value="DESC">A-Z</option>
+                    <option value="ASC">Z-A</option>
+                </select>
+            </div>
+
             <div className="container-cards">
                 {
                     <Pagination
