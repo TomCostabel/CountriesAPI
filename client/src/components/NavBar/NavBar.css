@@ -4,8 +4,14 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    background-color: #991f1f;
-    box-shadow: 0 0 10px 5px rgb(71, 71, 71);
+    background-color: #683217;
+    box-shadow: 0 0 10px 5px rgb(46, 45, 45);
     margin-inline: auto;
-    height: 55px;
+    height: 45px;
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.27);
+
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8.8px);
+    -webkit-backdrop-filter: blur(8.8px);
 }

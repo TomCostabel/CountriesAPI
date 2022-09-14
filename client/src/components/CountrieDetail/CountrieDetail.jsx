@@ -18,16 +18,25 @@ export default function CountrieDetail() {
         <>
             <NavBar />
             <div className="container-card-detail">
-                <div className="imagen-detail">
+                {/* <div className="imagen-detail">
                     <img src={detail[0]?.flag} alt="llamado detalle im" />
-                </div>
+                </div> */}
                 <div className="container-detail">
                     <h4>{detail[0]?.name}</h4>
-                    <h4>{detail[0]?.id}</h4>
-                    <h4>{detail[0]?.capital}</h4>
-                    <h4>{detail[0]?.subregion}</h4>
-                    <h4>{detail[0]?.area}</h4>
-                    <h4>{detail[0]?.population}</h4>
+                    {/* <h4>{detail[0]?.id}</h4> */}
+                    <h4>Capital: {detail[0]?.capital}</h4>
+                    <h4>Subregion: {detail[0]?.subregion}</h4>
+                    <h4>Area: {detail[0]?.area}</h4>
+                    <h4>Population: {detail[0]?.population}</h4>
+
+                    <section>
+                        <h4>Actividades turisticas:</h4>
+                        <ul>
+                            {detail[0]?.Activities?.map((el) => (
+                                <li key={el.id}>{el.name}</li>
+                            ))}
+                        </ul>
+                    </section>
                 </div>
             </div>
         </>

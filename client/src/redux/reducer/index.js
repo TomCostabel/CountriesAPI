@@ -26,8 +26,16 @@ const rootReducer = (state = initialState, action) => {
                     ? state.countries.sort((a, b) =>
                           b.name.localeCompare(a.name)
                       )
-                    : state.countries.sort((a, b) =>
+                    : action.payload === "DESC"
+                    ? state.countries.sort((a, b) =>
                           a.name.localeCompare(b.name)
+                      )
+                    : action.payload === "POPULATION_ASC"
+                    ? state.countries.sort(
+                          (a, b) => b.population < a.population
+                      )
+                    : state.countries.sort(
+                          (a, b) => a.population < b.population
                       );
             return {
                 ...state,

@@ -61,6 +61,26 @@ export default function Countries() {
         setCurrentPage(prevPage);
     };
 
+    const [buscador, setBuscador] = useState("");
+
+    const handleChange = (e) => {
+        setBuscador(e.target.value);
+
+        setCurrentPage(0);
+    };
+
+    useEffect(() => {
+        buscador.length === 0
+            ? setDatos(paises)
+            : setDatos(
+                  paises.filter((el) => {
+                      if (
+                          el.name.toLowerCase().includes(buscador.toLowerCase())
+                      )
+                          return el;
+                  })
+              );
+    }, [buscador, paises]);
     //------------------------------MAPEO PARA MOSTRAR LAS CARDS---------------------------------------------------->
 
     const allTheCountries = paisesActuales.map((e) => {
@@ -78,6 +98,12 @@ export default function Countries() {
     return (
         <div>
             <NavBar />
+            <input
+                type="text"
+                placeholder="BuscarPais..."
+                value={buscador}
+                onChange={(e) => handleChange(e)}
+            />
 
             <div>
                 Filtrado alfabetico
@@ -87,9 +113,22 @@ export default function Countries() {
                     }}
                     onChange={() => setCurrentPage(0)}
                 >
-                    <option value="">...</option>
+                    <option>...</option>
                     <option value="DESC">A-Z</option>
                     <option value="ASC">Z-A</option>
+                </select>
+            </div>
+            <div>
+                Filtrado population
+                <select
+                    onClick={(e) => {
+                        dispatch(sortBy(e.target.value));
+                    }}
+                    onChange={() => setCurrentPage(0)}
+                >
+                    <option>...</option>
+                    <option value="POPULATION_DESC">Population desc</option>
+                    <option value="POPULATION_ASC">Population asc</option>
                 </select>
             </div>
 
