@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllCountries, sortBy } from "../../redux/actions/index.js";
+import {
+    filterByContinent,
+    getAllCountries,
+    sortBy,
+} from "../../redux/actions/index.js";
 import Card from "../Card/Card";
 import "../Countries/Countries.css";
 import NavBar from "../NavBar/NavBar.jsx";
@@ -10,6 +14,7 @@ export default function Countries() {
     //-----------------------------MY STATES---------------------------------------------->
 
     const paises = useSelector((state) => state.countries);
+    const losContinentes = useSelector((state) => state.allCountries);
 
     const [currentPage, setCurrentPage] = useState(0);
     const [datos, setDatos] = useState([]);
@@ -18,11 +23,23 @@ export default function Countries() {
 
     const ITEMS_X_PAGE = currentPage === 0 ? 9 : 10;
     const dispatch = useDispatch();
+
+    const continentes = function () {
+        const arr = [];
+        losContinentes.map((e) =>
+            !arr.includes(e.continent) ? arr.push(e.continent) : null
+        );
+        return arr;
+    };
+
     //-----------------------------USE EFFECTS------------------------------------------->
+    useEffect(() => {
+        dispatch(getAllCountries());
+    }, [dispatch]);
 
     useEffect(() => {
         if (paises.length && !datos.length) setDatos(paises);
-        if (!datos.length) dispatch(getAllCountries());
+        // if (!datos.length) dispatch(getAllCountries());
 
         setPaisesActuales(
             datos.slice(
@@ -32,9 +49,6 @@ export default function Countries() {
         );
     }, [dispatch, currentPage, datos, paises]);
 
-    useEffect(() => {
-        dispatch(getAllCountries());
-    }, [dispatch]);
     //-----------------------------PREV AND NEXT HANDLER--------------------------------->
 
     const nextHandler = () => {
@@ -43,6 +57,7 @@ export default function Countries() {
         const firstIndex = nextPage * ITEMS_X_PAGE;
 
         if (paisesActuales.length < 10 && currentPage !== 0) return;
+
         setPaisesActuales(
             [...datos].slice(firstIndex, firstIndex + ITEMS_X_PAGE)
         );
@@ -129,6 +144,22 @@ export default function Countries() {
                     <option>...</option>
                     <option value="POPULATION_DESC">Population desc</option>
                     <option value="POPULATION_ASC">Population asc</option>
+                </select>
+            </div>
+            <div>
+                Filtrado continent
+                <select
+                    onClick={(e) => {
+                        dispatch(filterByContinent(e.target.value));
+                    }}
+                    onChange={() => setCurrentPage(0)}
+                >
+                    <option value="All">Order by continent</option>
+                    {continentes()?.map((e) => (
+                        <option value={e} key={e}>
+                            {e}
+                        </option>
+                    ))}
                 </select>
             </div>
 

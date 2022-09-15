@@ -18,7 +18,9 @@
 .logo-nav {
     height: 40px;
     cursor: pointer;
+    transition: 0.5s;
 }
+
 .boton-createActividad {
     background-color: #000000;
     border: 1px solid #ffffff;
