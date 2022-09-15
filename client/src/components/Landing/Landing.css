@@ -30,8 +30,8 @@ body {
 .boton-landing {
     border: none;
     position: absolute;
-    top: 66%;
-    right: 78%;
+    top: 62%;
+    right: 77%;
     background: none;
     padding: 1% 7%;
     width: 17%;
@@ -57,7 +57,7 @@ body {
     color: white;
     font-size: 30px;
     position: absolute;
-    top: -6%;
+    /* top: -6%; */
     right: 53.7%;
     /* background: none; */
     padding: 14% 1%;

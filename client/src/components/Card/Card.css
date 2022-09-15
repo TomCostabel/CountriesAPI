@@ -1,8 +1,8 @@
 .container-card {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.404);
     border-radius: 5px;
     width: 320px;
-    height: 450px;
+    height: 370px;
 
     box-shadow: 22px 29px 34px -10px rgba(0, 0, 0, 0.75);
     transition: 1s;
@@ -18,4 +18,11 @@
 }
 .container-card:hover {
     transform: scale(1.06);
+}
+.container-text {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    line-height: 0;
 }

@@ -7,11 +7,38 @@
     background-color: #683217;
     box-shadow: 0 0 10px 5px rgb(46, 45, 45);
     margin-inline: auto;
-    height: 45px;
+    height: 55px;
     /* From https://css.glass */
     background: rgba(255, 255, 255, 0.27);
 
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(8.8px);
     -webkit-backdrop-filter: blur(8.8px);
+}
+.logo-nav {
+    height: 40px;
+    cursor: pointer;
+}
+.boton-createActividad {
+    background-color: #000000;
+    border: 1px solid #ffffff;
+    color: white;
+    padding: 15px 32px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.5s;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    height: 43px;
+    width: 200px;
+}
+.boton-createActividad:hover {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #000000;
 }
