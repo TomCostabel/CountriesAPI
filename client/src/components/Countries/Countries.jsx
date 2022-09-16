@@ -13,7 +13,7 @@ import Pagination from "../Pagination/Pagination.jsx";
 import Imagen from "../../Imagenes/icon.png";
 
 export default function Countries() {
-    //-----------------------------MY STATES---------------------------------------------->
+    //--------------------------------------MY STATES & CONSTANTS----------------------------------------------->
 
     const paises = useSelector((state) => state.countries);
     const losContinentes = useSelector((state) => state.allCountries);
@@ -21,11 +21,10 @@ export default function Countries() {
     const [currentPage, setCurrentPage] = useState(0);
     const [datos, setDatos] = useState([]);
     const [paisesActuales, setPaisesActuales] = useState([]);
-
-    //----------------------------------------
+    const dispatch = useDispatch();
 
     const ITEMS_X_PAGE = currentPage === 0 ? 9 : 10;
-    const dispatch = useDispatch();
+    //------------------------------------------FILTER X CONTINENTS------------------------------------------------------->
 
     const continentes = function () {
         const arr = [];
@@ -35,14 +34,13 @@ export default function Countries() {
         return arr;
     };
 
-    //-----------------------------USE EFFECTS------------------------------------------->
+    //--------------------------------------------USE EFFECTS--------------------------------------------------->
     useEffect(() => {
         dispatch(getAllCountries());
     }, [dispatch]);
 
     useEffect(() => {
         if (paises.length && !datos.length) setDatos(paises);
-        // if (!datos.length) dispatch(getAllCountries());
 
         setPaisesActuales(
             datos.slice(
@@ -52,7 +50,7 @@ export default function Countries() {
         );
     }, [dispatch, currentPage, datos, paises]);
 
-    //-----------------------------PREV AND NEXT HANDLER--------------------------------->
+    //-------------------------------------------NEXT HANDLER---------------------------------------------------->
 
     const nextHandler = () => {
         const nextPage = currentPage + 1;
@@ -66,6 +64,8 @@ export default function Countries() {
         );
         setCurrentPage(nextPage);
     };
+    //-----------------------------------------PREV HANDLER---------------------------------------------------->
+
     const prevHandler = () => {
         const prevPage = currentPage - 1;
 
@@ -78,6 +78,7 @@ export default function Countries() {
         );
         setCurrentPage(prevPage);
     };
+    //---------------------------------BUSCADOR AL INSTANTE-------------------------------------------------------->
 
     const [buscador, setBuscador] = useState("");
 
@@ -99,7 +100,7 @@ export default function Countries() {
                   })
               );
     }, [buscador, paises]);
-    //------------------------------MAPEO PARA MOSTRAR LAS CARDS---------------------------------------------------->
+    //------------------------------------MAP TO COUNTRYS---------------------------------------------------------->
 
     const allTheCountries = paisesActuales.map((e) => {
         return (
@@ -112,7 +113,9 @@ export default function Countries() {
             />
         );
     });
-    // console.log("esto es allCountries...", allTheCountries);
+
+    //--------------------------------------RETURN----------------------------------------------------------------->
+
     if (!paises.length) {
         return <Loading />;
     }

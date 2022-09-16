@@ -6,7 +6,7 @@ export default function Landing() {
     return (
         <div className="coco">
             <div className="text-landing">
-                <h1>NEVER STOP EXPLORNG</h1>
+                <h1>NEVER STOP EXPLORING</h1>
                 <h1> THE WORLD</h1>
                 {/* <h1> WORLD </h1> */}
             </div>
