@@ -4,6 +4,49 @@
     flex-wrap: wrap;
     justify-content: flex-start;
     gap: 30px;
-    margin-top: 50px;
-    margin-left: 60px;
+    margin-top: 4px;
+    margin-left: 65px;
+}
+.container_filtros {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 10px;
+}
+
+.filter_continents {
+    border: 1px SOLID white;
+    width: 243px;
+    border-radius: 4px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.452);
+}
+.filter_alpgh {
+    border: 1px SOLID white;
+    width: 190px;
+    border-radius: 4px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.452);
+}
+.filter_pop {
+    border: 1px SOLID white;
+    width: 256px;
+    border-radius: 4px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.452);
+}
+.img_buscador {
+    height: 27px;
+    width: 27px;
+}
+.buscador_and_image {
+    height: 25px;
+    display: flex;
+    border: 1px SOLID rgba(255, 255, 255, 0.541);
+    width: 204px;
+    border-radius: 4px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.466);
+}
+.input {
+    border-radius: 4px;
 }

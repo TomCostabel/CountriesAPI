@@ -3,6 +3,7 @@ import "./App.css";
 import Landing from "./components/Landing/Landing.jsx";
 import Countries from "./components/Countries/Countries.jsx";
 import CountrieDetail from "./components/CountrieDetail/CountrieDetail";
+import CreateActivity from "./components/CreateActivity/CreateActivity.jsx";
 
 function App() {
     return (
@@ -13,6 +14,7 @@ function App() {
                 path="/Home/CountrieDetail/:id"
                 element={<CountrieDetail />}
             />
+            <Route path="Home/CreateActivity" element={<CreateActivity />} />
         </Routes>
     );
 }

@@ -7,8 +7,10 @@ import {
 } from "../../redux/actions/index.js";
 import Card from "../Card/Card";
 import "../Countries/Countries.css";
+import Loading from "../Loading/Loading.jsx";
 import NavBar from "../NavBar/NavBar.jsx";
 import Pagination from "../Pagination/Pagination.jsx";
+import Imagen from "../../Imagenes/icon.png";
 
 export default function Countries() {
     //-----------------------------MY STATES---------------------------------------------->
@@ -19,6 +21,7 @@ export default function Countries() {
     const [currentPage, setCurrentPage] = useState(0);
     const [datos, setDatos] = useState([]);
     const [paisesActuales, setPaisesActuales] = useState([]);
+
     //----------------------------------------
 
     const ITEMS_X_PAGE = currentPage === 0 ? 9 : 10;
@@ -110,57 +113,65 @@ export default function Countries() {
         );
     });
     // console.log("esto es allCountries...", allTheCountries);
+    if (!paises.length) {
+        return <Loading />;
+    }
     return (
         <div>
             <NavBar />
-            <input
-                type="text"
-                placeholder="BuscarPais..."
-                value={buscador}
-                onChange={(e) => handleChange(e)}
-            />
-
-            <div>
-                Filtrado alfabetico
-                <select
-                    onClick={(e) => {
-                        dispatch(sortBy(e.target.value));
-                    }}
-                    onChange={() => setCurrentPage(0)}
-                >
-                    <option>...</option>
-                    <option value="DESC">A-Z</option>
-                    <option value="ASC">Z-A</option>
-                </select>
-            </div>
-            <div>
-                Filtrado population
-                <select
-                    onClick={(e) => {
-                        dispatch(sortBy(e.target.value));
-                    }}
-                    onChange={() => setCurrentPage(0)}
-                >
-                    <option>...</option>
-                    <option value="POPULATION_DESC">Population desc</option>
-                    <option value="POPULATION_ASC">Population asc</option>
-                </select>
-            </div>
-            <div>
-                Filtrado continent
-                <select
-                    onClick={(e) => {
-                        dispatch(filterByContinent(e.target.value));
-                    }}
-                    onChange={() => setCurrentPage(0)}
-                >
-                    <option value="All">Order by continent</option>
-                    {continentes()?.map((e) => (
-                        <option value={e} key={e}>
-                            {e}
-                        </option>
-                    ))}
-                </select>
+            <div className="container_filtros">
+                <div className="buscador_and_image">
+                    <img className="img_buscador" src={Imagen} alt="fotito" />
+                    <input
+                        className="input"
+                        type="text"
+                        placeholder="Search country..."
+                        value={buscador}
+                        onChange={(e) => handleChange(e)}
+                    />
+                </div>
+                <div className="filter_alpgh">
+                    Alphabetical filtering
+                    <select
+                        onClick={(e) => {
+                            dispatch(sortBy(e.target.value));
+                        }}
+                        onChange={() => setCurrentPage(0)}
+                    >
+                        <option>...</option>
+                        <option value="DESC">A-Z</option>
+                        <option value="ASC">Z-A</option>
+                    </select>
+                </div>
+                <div className="filter_pop">
+                    Population Filtering
+                    <select
+                        onClick={(e) => {
+                            dispatch(sortBy(e.target.value));
+                        }}
+                        onChange={() => setCurrentPage(0)}
+                    >
+                        <option>...</option>
+                        <option value="POPULATION_DESC">Population desc</option>
+                        <option value="POPULATION_ASC">Population asc</option>
+                    </select>
+                </div>
+                <div className="filter_continents">
+                    Filtered continents
+                    <select
+                        onClick={(e) => {
+                            dispatch(filterByContinent(e.target.value));
+                        }}
+                        onChange={() => setCurrentPage(0)}
+                    >
+                        <option value="All">...</option>
+                        {continentes()?.map((e) => (
+                            <option value={e} key={e}>
+                                {e}
+                            </option>
+                        ))}
+                    </select>
+                </div>
             </div>
 
             <div className="container-cards">
