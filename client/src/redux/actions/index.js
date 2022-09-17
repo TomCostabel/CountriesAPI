@@ -47,3 +47,13 @@ export function filterByContinent(payload) {
         payload,
     };
 }
+
+export function postActivity(payload) {
+    return async function () {
+        const response = await axios.post(
+            "http://localhost:3001/activities",
+            payload
+        );
+        return response;
+    };
+}

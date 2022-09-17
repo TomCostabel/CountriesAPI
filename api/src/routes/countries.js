@@ -104,6 +104,7 @@ router.get("/countries/:id", async (req, res) => {
 
 router.post("/activities", async (req, res) => {
     const { name, difficulty, season, duration, countries } = req.body;
+    console.log(req.body);
 
     try {
         let newAct = await Activity.create({
