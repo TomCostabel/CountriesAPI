@@ -31,11 +31,21 @@ export default function CountrieDetail() {
 
                     <section>
                         <h4>Actividades turisticas:</h4>
-                        <ul>
+                        {/* <ul>
                             {detail[0]?.Activities?.map((el) => (
                                 <li key={el.id}>{el.name}</li>
                             ))}
-                        </ul>
+                        </ul> */}
+                        {detail[0]?.Activities.map((e) => {
+                            return (
+                                <div>
+                                    <h4>{e.name}</h4>
+                                    <p>Dificultad: {e.difficulty}</p>
+                                    <p>Duración: {e.duration} horas</p>
+                                    <p>Temporada: {e.season}</p>
+                                </div>
+                            );
+                        })}
                     </section>
                 </div>
             </div>

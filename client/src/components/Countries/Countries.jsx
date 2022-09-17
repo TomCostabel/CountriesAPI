@@ -17,6 +17,7 @@ export default function Countries() {
 
     const paises = useSelector((state) => state.countries);
     const losContinentes = useSelector((state) => state.allCountries);
+    const countriesFilter = useSelector((state) => state.countriesFilter);
 
     const [currentPage, setCurrentPage] = useState(0);
     const [datos, setDatos] = useState([]);

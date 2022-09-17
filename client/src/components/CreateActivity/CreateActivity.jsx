@@ -4,11 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllCountries, postActivity } from "../../redux/actions";
 import Loading from "../Loading/Loading";
 import NavBar from "../NavBar/NavBar";
+import "../CreateActivity/CreateActivity.css";
 
 export default function CreateActivity() {
     const nombrePaises = useSelector((state) => state.countries);
     // const navigate = useNavigate();
     const dispatch = useDispatch();
+    const [errors, setErrors] = useState({});
     const [input, setInput] = useState({
         name: "",
         difficulty: "",
@@ -17,6 +19,25 @@ export default function CreateActivity() {
         countries: [],
     });
 
+    //-------------------------------------VALIDATE FUNCTION-------------------------->
+
+    function validate(input) {
+        let errors = {};
+
+        if (/[^A-Za-z0-9 ]+/g.test(input.name))
+            errors.name = "* Name cannot have special characters or accents.";
+
+        // if (!input.duration) errors.duration = "Campo Necesario";
+
+        // if (!input.season || input.season === "vacio")
+        //     errors.season = "Campo Necesario";
+
+        // if (!input.countries || input.countries.length === 0)
+        //     errors.countries = "Campo Necesario";
+
+        return errors;
+    }
+
     //-------------------------------------HANDLE CHANGE-------------------------->
 
     function handleChange(e) {
@@ -24,12 +45,12 @@ export default function CreateActivity() {
             ...input,
             [e.target.name]: e.target.value,
         });
-        // setErrors(
-        //     validate({
-        //         ...input,
-        //         [e.target.name]: e.target.value,
-        //     })
-        // );
+        setErrors(
+            validate({
+                ...input,
+                [e.target.name]: e.target.value,
+            })
+        );
     }
     //-------------------------------------HANDLE SELECT-------------------------->
 
@@ -60,12 +81,10 @@ export default function CreateActivity() {
             !input.season ||
             !input.countries
         ) {
-            return alert(
-                "Complete correctamente el formulario antes de enviarlo"
-            );
+            return alert("❌Please complete all fields. ");
         }
         dispatch(postActivity(input));
-        alert("Actividad Creada Exitosamente");
+        alert("✔️Activity created successfully");
         setInput({
             name: "",
             difficulty: "",
@@ -107,10 +126,14 @@ export default function CreateActivity() {
                         onChange={(e) => handleChange(e)}
                         placeholder="Name..."
                     />
-
+                    {errors.name && <p className="errores">{errors.name}</p>}
                     <label>Difficulty</label>
-                    <select name="difficulty" onChange={(e) => handleSelect(e)}>
-                        <option>1 - 5</option>
+                    <select
+                        className="content-select-difficulty"
+                        name="difficulty"
+                        onChange={(e) => handleSelect(e)}
+                    >
+                        <option></option>
                         <option value={1}>1</option>
                         <option value={2}>2</option>
                         <option value={3}>3</option>
@@ -118,8 +141,13 @@ export default function CreateActivity() {
                         <option value={5}>5</option>
                     </select>
                     <label>Duration</label>
-                    <select name="duration" onChange={(e) => handleSelect(e)}>
-                        <option>1 - 5 hs</option>
+
+                    <select
+                        className="content-select-duration"
+                        name="duration"
+                        onChange={(e) => handleSelect(e)}
+                    >
+                        <option></option>
                         <option value={1}>1 Hr</option>
                         <option value={2}>2 Hrs</option>
                         <option value={3}>3 Hrs</option>
@@ -127,26 +155,31 @@ export default function CreateActivity() {
                         <option value={5}>5 Hrs</option>
                     </select>
                     <label>Season</label>
-                    <select name="season" onChange={(e) => handleSelect(e)}>
-                        <option>...</option>
+                    <select
+                        className="content-select-season"
+                        name="season"
+                        onChange={(e) => handleSelect(e)}
+                    >
+                        <option></option>
                         <option value="winter">Winter</option>
                         <option value="summer">Summer</option>
                         <option value="spring">Spring</option>
                         <option value="autumn">Autumn</option>
                     </select>
 
+                    <label>Countries</label>
                     <select
+                        className="content-select"
                         name="countries"
                         id="countries"
                         onChange={(e) => handleSelect(e)}
                     >
-                        <option>Select Countrys...</option>
+                        <option></option>
                         {nombrePaises?.map((e) => {
                             return <option value={e.name}>{e.name}</option>;
                         })}
                     </select>
-
-                    <button className="button-form">Create activity</button>
+                    <button>CREATE ACTIVITY</button>
                 </form>
 
                 {input.countries.map((e) => (

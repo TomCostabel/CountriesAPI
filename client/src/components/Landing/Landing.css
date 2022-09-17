@@ -14,9 +14,9 @@
     font-family: sans-serif;
 }
 body {
-    background-image: url(../../Imagenes/1.jpeg);
+    background-image: url(../../Imagenes/2.jpg);
 
-    backdrop-filter: blur(4px);
+    /* backdrop-filter: blur(4px); */
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
