@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 // import { useNavigate } from "react-router-dom";
 import { getAllCountries, postActivity } from "../../redux/actions";
 import Loading from "../Loading/Loading";
-import NavBar from "../NavBar/NavBar";
+import NavBar from "../NavBar/NavBarClean.jsx";
 import "../CreateActivity/CreateActivity.css";
 
 export default function CreateActivity() {

@@ -17,14 +17,14 @@ export default function Countries() {
 
     const paises = useSelector((state) => state.countries);
     const losContinentes = useSelector((state) => state.allCountries);
-    const countriesFilter = useSelector((state) => state.countriesFilter);
+    // const countriesFilter = useSelector((state) => state.countriesFilter);
 
     const [currentPage, setCurrentPage] = useState(0);
     const [datos, setDatos] = useState([]);
     const [paisesActuales, setPaisesActuales] = useState([]);
     const dispatch = useDispatch();
 
-    const ITEMS_X_PAGE = currentPage === 0 ? 9 : 10;
+    const itemXPage = currentPage === 0 ? 9 : 10;
     //------------------------------------------FILTER X CONTINENTS------------------------------------------------------->
 
     const continentes = function () {
@@ -45,24 +45,22 @@ export default function Countries() {
 
         setPaisesActuales(
             datos.slice(
-                currentPage * ITEMS_X_PAGE,
-                currentPage * ITEMS_X_PAGE + ITEMS_X_PAGE
+                currentPage * itemXPage,
+                currentPage * itemXPage + itemXPage
             )
         );
-    }, [dispatch, currentPage, datos, paises]);
+    }, [dispatch, currentPage, datos, paises, itemXPage]);
 
     //-------------------------------------------NEXT HANDLER---------------------------------------------------->
 
     const nextHandler = () => {
         const nextPage = currentPage + 1;
 
-        const firstIndex = nextPage * ITEMS_X_PAGE;
+        const firstIndex = nextPage * itemXPage;
 
         if (paisesActuales.length < 10 && currentPage !== 0) return;
 
-        setPaisesActuales(
-            [...datos].slice(firstIndex, firstIndex + ITEMS_X_PAGE)
-        );
+        setPaisesActuales([...datos].slice(firstIndex, firstIndex + itemXPage));
         setCurrentPage(nextPage);
     };
     //-----------------------------------------PREV HANDLER---------------------------------------------------->
@@ -72,11 +70,9 @@ export default function Countries() {
 
         if (prevPage < 0) return;
 
-        const firstIndex = prevPage * ITEMS_X_PAGE;
+        const firstIndex = prevPage * itemXPage;
 
-        setPaisesActuales(
-            [...datos].slice(firstIndex, firstIndex + ITEMS_X_PAGE)
-        );
+        setPaisesActuales([...datos].slice(firstIndex, firstIndex + itemXPage));
         setCurrentPage(prevPage);
     };
     //---------------------------------BUSCADOR AL INSTANTE-------------------------------------------------------->
@@ -93,7 +89,7 @@ export default function Countries() {
         buscador.length === 0
             ? setDatos(paises)
             : setDatos(
-                  paises.filter((el) => {
+                  paises?.filter((el) => {
                       if (
                           el.name.toLowerCase().includes(buscador.toLowerCase())
                       )
@@ -142,7 +138,7 @@ export default function Countries() {
                         }}
                         onChange={() => setCurrentPage(0)}
                     >
-                        <option>...</option>
+                        <option></option>
                         <option value="DESC">A-Z</option>
                         <option value="ASC">Z-A</option>
                     </select>
@@ -155,7 +151,7 @@ export default function Countries() {
                         }}
                         onChange={() => setCurrentPage(0)}
                     >
-                        <option>...</option>
+                        <option></option>
                         <option value="POPULATION_DESC">Population desc</option>
                         <option value="POPULATION_ASC">Population asc</option>
                     </select>
@@ -168,7 +164,7 @@ export default function Countries() {
                         }}
                         onChange={() => setCurrentPage(0)}
                     >
-                        <option value="All">...</option>
+                        <option value="All"></option>
                         {continentes()?.map((e) => (
                             <option value={e} key={e}>
                                 {e}

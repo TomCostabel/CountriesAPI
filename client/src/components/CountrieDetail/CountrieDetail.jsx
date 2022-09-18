@@ -1,53 +1,82 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getCountrieDetail } from "../../redux/actions";
 import "../CountrieDetail/CountrieDetail.css";
-import NavBar from "../NavBar/NavBar";
+import Loading from "../Loading/Loading";
+import NavBar from "../NavBar/NavBarClean.jsx";
 
 export default function CountrieDetail() {
     const { id } = useParams();
 
     const detail = useSelector((state) => state.countrieDetail);
     const dispatch = useDispatch();
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         dispatch(getCountrieDetail(id));
     }, [dispatch, id]);
+    setTimeout(() => {
+        setLoading(false);
+    }, 1000);
+
+    if (loading) {
+        return <Loading />;
+    }
     return (
         <>
             <NavBar />
+            <Link to="/Home">
+                <button className="button-back">BACK</button>
+            </Link>
             <div className="container-card-detail">
-                {/* <div className="imagen-detail">
-                    <img src={detail[0]?.flag} alt="llamado detalle im" />
-                </div> */}
-                <div className="container-detail">
-                    <h4>{detail[0]?.name}</h4>
+                <div>
+                    <h1 className="name-detail">{detail[0]?.name}</h1>
+                    <img
+                        className="imagen-detail"
+                        src={detail[0]?.flag}
+                        alt="llamado detalle im"
+                    />
                     {/* <h4>{detail[0]?.id}</h4> */}
-                    <h4>Capital: {detail[0]?.capital}</h4>
-                    <h4>Subregion: {detail[0]?.subregion}</h4>
-                    <h4>Area: {detail[0]?.area}</h4>
-                    <h4>Population: {detail[0]?.population}</h4>
+                    <h4 className="datos-pais">
+                        Capital: {detail[0]?.capital}
+                    </h4>
+                    <h4 className="datos-pais">
+                        Subregion: {detail[0]?.subregion}
+                    </h4>
+                    <h4 className="datos-pais">Area: {detail[0]?.area}</h4>
+                    <h4 className="datos-pais">
+                        Population: {detail[0]?.population}
+                    </h4>
+                </div>
 
+                <div className="container-detail">
                     <section>
-                        <h4>Actividades turisticas:</h4>
-                        {/* <ul>
-                            {detail[0]?.Activities?.map((el) => (
-                                <li key={el.id}>{el.name}</li>
-                            ))}
-                        </ul> */}
-                        {detail[0]?.Activities.map((e) => {
-                            return (
-                                <div>
-                                    <h4>{e.name}</h4>
-                                    <p>Dificultad: {e.difficulty}</p>
-                                    <p>Duración: {e.duration} horas</p>
-                                    <p>Temporada: {e.season}</p>
-                                </div>
-                            );
-                        })}
+                        <h3>TOURIST ACTIVITIES:</h3>
+
+                        {detail[0]?.Activities.length ? (
+                            detail[0]?.Activities.map((e) => {
+                                return (
+                                    <div className="activities-container">
+                                        <h4>{e.name}</h4>
+                                        <p>Difficulty: {e.difficulty}</p>
+                                        <p>Duration: {e.duration} horas</p>
+                                        <p>Season: {e.season}</p>
+                                    </div>
+                                );
+                            })
+                        ) : (
+                            <h1 className="activities-container">
+                                There are no tourist activities in this country.
+                            </h1>
+                        )}
                     </section>
                 </div>
+                <Link to="/Home/CreateActivity">
+                    <div className="button">
+                        <h6 className="name-add-activity">ADD ACTIVITY</h6>
+                    </div>
+                </Link>
             </div>
         </>
     );
