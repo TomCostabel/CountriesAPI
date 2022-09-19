@@ -18,21 +18,21 @@
     width: 243px;
     border-radius: 4px;
     color: white;
-    background-color: rgba(0, 0, 0, 0.452);
+    background-color: rgba(0, 0, 0, 0.699);
 }
 .filter_alpgh {
     border: 1px SOLID white;
     width: 190px;
     border-radius: 4px;
     color: white;
-    background-color: rgba(0, 0, 0, 0.452);
+    background-color: rgba(0, 0, 0, 0.699);
 }
 .filter_pop {
     border: 1px SOLID white;
     width: 256px;
     border-radius: 4px;
     color: white;
-    background-color: rgba(0, 0, 0, 0.452);
+    background-color: rgba(0, 0, 0, 0.699);
 }
 .img_buscador {
     height: 27px;
@@ -45,7 +45,7 @@
     width: 204px;
     border-radius: 4px;
     color: white;
-    background-color: rgba(0, 0, 0, 0.466);
+    background-color: rgba(0, 0, 0, 0.699);
 }
 .input {
     border-radius: 4px;

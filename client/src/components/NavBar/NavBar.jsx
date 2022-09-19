@@ -1,13 +1,12 @@
 import React from "react";
 import "../NavBar/NavBar.css";
-import Imagen from "../../Imagenes/icon.png";
+// import Imagen from "../../Imagenes/icon1.png";
 import { Link } from "react-router-dom";
 export default function NavBar() {
     return (
         <div className="navbar-container ">
-            <Link to="/Home">
-                <img className="logo-nav" src={Imagen} alt="Logo NavBar" />
-            </Link>
+            {/* <img className="logo-nav" src={Imagen} alt="Logo NavBar" /> */}
+
             <Link to="/Home/CreateActivity">
                 <button className="boton-createActividad">
                     Create Activity

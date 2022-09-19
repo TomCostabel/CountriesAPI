@@ -168,8 +168,8 @@ export default function Countries() {
                         onChange={() => setCurrentPage(0)}
                     >
                         <option></option>
-                        <option value="POPULATION_DESC">Population desc</option>
-                        <option value="POPULATION_ASC">Population asc</option>
+                        <option value="POPULATION_ASC">Population ↥</option>
+                        <option value="POPULATION_DESC">Population ↧</option>
                     </select>
                 </div>
                 {/* //----------------------------- FILTERED CONTINENTS ----------------------> */}

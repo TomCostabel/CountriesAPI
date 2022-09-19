@@ -1,10 +1,10 @@
 .container-card {
-    background-color: rgba(255, 255, 255, 0.404);
+    background-color: rgba(0, 0, 0, 0.562);
     border-radius: 5px;
     width: 320px;
     height: 370px;
 
-    box-shadow: 22px 29px 34px -10px rgba(0, 0, 0, 0.75);
+    box-shadow: 22px 29px 34px -10px rgba(75, 74, 74, 0.75);
     transition: 1s;
     transition: transform 0.5s ease-out;
 }
@@ -20,6 +20,7 @@
     transform: scale(1.06);
 }
 .container-text {
+    color: aliceblue;
     display: flex;
     align-items: center;
     flex-direction: column;

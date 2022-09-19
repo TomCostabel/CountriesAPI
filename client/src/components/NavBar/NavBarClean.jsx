@@ -1,14 +1,11 @@
 import React from "react";
 import "../NavBar/NavBar.css";
-import Imagen from "../../Imagenes/icon.png";
-import { Link } from "react-router-dom";
+import Imagen from "../../Imagenes/icon1.png";
 
 export default function NavBarClean() {
     return (
         <div className="navbar-container ">
-            <Link to="/Home">
-                <img className="logo-nav" src={Imagen} alt="Logo NavBar" />
-            </Link>
+            <img className="logo-nav2" src={Imagen} alt="Logo NavBar" />
         </div>
     );
 }

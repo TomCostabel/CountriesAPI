@@ -6,7 +6,7 @@
     justify-content: space-around;
     /* align-items: center; */
 
-    border: 1px solid rgb(216, 135, 88);
+    border: 1px solid rgb(87, 143, 180);
     background-color: rgba(0, 0, 0, 0.445);
     border-radius: 3px;
     width: 850px;
@@ -25,7 +25,7 @@
     text-align: left; */
     margin-top: 40px;
     margin-right: 90px;
-    color: wheat;
+    color: rgb(255, 255, 255);
     /* border: 1px solid black;
     border-radius: 4px;
     background-color: rgba(0, 0, 0, 0.486); */
@@ -35,7 +35,7 @@
 }
 .datos-pais {
     display: flex;
-    color: wheat;
+    color: rgb(255, 254, 251);
     margin-left: 130px;
 }
 
@@ -45,7 +45,7 @@
     margin-left: 20px;
 }
 .name-detail {
-    color: wheat;
+    color: rgb(255, 255, 255);
     font-size: 30px;
     margin-left: 150px;
 }
@@ -57,9 +57,9 @@
     background-color: rgba(0, 0, 0, 0.363);
 }
 .button {
-    background-color: wheat;
-    border: 2px solid rgb(230, 156, 72);
-    color: rgb(230, 156, 72);
+    background-color: rgb(253, 254, 255);
+    border: 2px solid rgb(87, 143, 180);
+    color: rgb(87, 143, 180);
     height: 40px;
     border-radius: 10px;
     cursor: pointer;
@@ -69,18 +69,18 @@
     transition: 0.5s;
 }
 .button:hover {
-    color: black;
-    background-color: rgb(255, 255, 255);
-    border: 2px solid black;
+    color: rgb(248, 248, 248);
+    background-color: rgb(87, 143, 180);
+    border: 2px solid rgb(58, 114, 151);
 }
 .name-add-activity {
     margin-top: 12px;
     margin-left: 5px;
 }
 .button-back {
-    color: rgb(0, 0, 0);
-    background-color: wheat;
-    border-color: rgb(231, 151, 59);
+    color: rgb(87, 143, 180);
+    background-color: rgb(255, 255, 255);
+    border-color: rgb(87, 143, 180);
     margin-top: 70px;
     margin-left: 900px;
     height: 35px;
@@ -90,6 +90,6 @@
     transition: 0.5s;
 }
 .button-back:hover {
-    color: black;
-    background-color: white;
+    color: rgb(255, 251, 251);
+    background-color: rgb(87, 143, 180);
 }
