@@ -3,12 +3,15 @@ import {
     GET_ALL_COUNTRIE_ID,
     SET_SORT,
     FILTER_BY_CONTINENT,
+    GET_TOURIST_ACTIVITIES,
+    FILTER_BY_ACTIVITIES,
 } from "../actions/index";
 
 const initialState = {
     countries: [],
     countrieDetail: [],
     allCountries: [],
+    allActivities: [],
 };
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -17,6 +20,11 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 countries: action.payload,
                 allCountries: action.payload, //------> en el llamado allCountries tambien seteamos toda la info en continents para despues filtrarlos!
+            };
+        case GET_TOURIST_ACTIVITIES:
+            return {
+                ...state,
+                allActivities: action.payload,
             };
         case GET_ALL_COUNTRIE_ID:
             return {
@@ -54,6 +62,29 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 countries: continentFilter,
+            };
+        case FILTER_BY_ACTIVITIES:
+            const allCountries2 = state.allCountries;
+
+            const solo = allCountries2.filter((pais) => {
+                return pais.Activities.length > 0;
+            });
+
+            let array = [];
+
+            for (let i = 0; i < solo.length; i++) {
+                for (let j = 0; j < solo[i].Activities.length; j++) {
+                    if (solo[i].Activities[j].name === action.payload) {
+                        array.push(solo[i]);
+                    }
+                }
+            }
+
+            const filtro = action.payload === "Todos" ? allCountries2 : array;
+
+            return {
+                ...state,
+                countries: filtro,
             };
 
         default:

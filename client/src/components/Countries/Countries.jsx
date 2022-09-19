@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+    filterByAct,
     filterByContinent,
+    getActivities,
     getAllCountries,
     sortBy,
 } from "../../redux/actions/index.js";
@@ -17,7 +19,7 @@ export default function Countries() {
 
     const paises = useSelector((state) => state.countries);
     const losContinentes = useSelector((state) => state.allCountries);
-    // const countriesFilter = useSelector((state) => state.countriesFilter);
+    const activities = useSelector((state) => state.allActivities);
 
     const [currentPage, setCurrentPage] = useState(0);
     const [datos, setDatos] = useState([]);
@@ -34,10 +36,18 @@ export default function Countries() {
         );
         return arr;
     };
+    //------------------------------------------FILTER X ACTIVITIE------------------------------------------------------->
 
+    function handleFilterByAct(e) {
+        e.target.value === "none"
+            ? dispatch(getAllCountries())
+            : dispatch(filterByAct(e.target.value));
+        setCurrentPage(0);
+    }
     //--------------------------------------------USE EFFECTS--------------------------------------------------->
     useEffect(() => {
         dispatch(getAllCountries());
+        dispatch(getActivities());
     }, [dispatch]);
 
     useEffect(() => {
@@ -63,6 +73,7 @@ export default function Countries() {
         setPaisesActuales([...datos].slice(firstIndex, firstIndex + itemXPage));
         setCurrentPage(nextPage);
     };
+
     //-----------------------------------------PREV HANDLER---------------------------------------------------->
 
     const prevHandler = () => {
@@ -120,6 +131,7 @@ export default function Countries() {
         <div>
             <NavBar />
             <div className="container_filtros">
+                {/* //--------------------------------- INPUT BUSQUEDA--------------------------> */}
                 <div className="buscador_and_image">
                     <img className="img_buscador" src={Imagen} alt="fotito" />
                     <input
@@ -130,6 +142,8 @@ export default function Countries() {
                         onChange={(e) => handleChange(e)}
                     />
                 </div>
+                {/* //----------------------------- ALPHABETICAL FILTERING ---------------------> */}
+
                 <div className="filter_alpgh">
                     Alphabetical filtering
                     <select
@@ -143,6 +157,8 @@ export default function Countries() {
                         <option value="ASC">Z-A</option>
                     </select>
                 </div>
+                {/* //----------------------------- POPULATION FILTERING ----------------------> */}
+
                 <div className="filter_pop">
                     Population Filtering
                     <select
@@ -156,6 +172,8 @@ export default function Countries() {
                         <option value="POPULATION_ASC">Population asc</option>
                     </select>
                 </div>
+                {/* //----------------------------- FILTERED CONTINENTS ----------------------> */}
+
                 <div className="filter_continents">
                     Filtered continents
                     <select
@@ -170,6 +188,23 @@ export default function Countries() {
                                 {e}
                             </option>
                         ))}
+                    </select>
+                </div>
+                {/* //----------------------------- FILTER BY ACTIVITY ---------------------> */}
+
+                <div className="filter_continents">
+                    Filter by activity
+                    <select onChange={(e) => handleFilterByAct(e)}>
+                        <option value="none"></option>
+                        {activities.length === 0 ? (
+                            <option value="none">No activity</option>
+                        ) : (
+                            activities?.map((e) => (
+                                <option value={e.name} key={e.id}>
+                                    {e.name}
+                                </option>
+                            ))
+                        )}
                     </select>
                 </div>
             </div>
