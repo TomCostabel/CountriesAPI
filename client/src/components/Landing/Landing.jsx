@@ -9,15 +9,15 @@ export default function Landing() {
         <div className="coco">
             <img className="img-1" src={imagen} alt="ss" />
             <div className="text-landing">
-                <h3>MEMORIES</h3>
-                <h1> OF THE WORLD</h1>
+                <h5>EXPLORING</h5>
+                <h1> THE WORLD</h1>
                 {/* <h1> WORLD </h1> */}
             </div>
             <h6 className="description">
-                The world is a big place, full of flags accompanied by
-                incredible cultures and activities that differentiate them from
-                each other. Without much more to say, let's go together to meet
-                him.
+                The world is a big place, conformed by countries with such
+                incredible cultures and full of activities that make them unique
+                in every way. Let's get together and see what it's got to show
+                us.
                 {/* El mundo es un lugar grande, lleno de banderas acompanadas de
                 increibles culturas y actividades que las diferencian entre si.
                 Sin mucho mas que decir, vayamos juntos a conocerlo. */}

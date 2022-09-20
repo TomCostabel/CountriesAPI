@@ -66,9 +66,9 @@ export default function CountrieDetail() {
                                 );
                             })
                         ) : (
-                            <h1 className="activities-container">
+                            <h3 className="activities-container">
                                 There are no tourist activities in this country.
-                            </h1>
+                            </h3>
                         )}
                     </section>
                 </div>

@@ -5,6 +5,7 @@ import { getAllCountries, postActivity } from "../../redux/actions";
 import Loading from "../Loading/Loading";
 import NavBar from "../NavBar/NavBarClean.jsx";
 import "../CreateActivity/CreateActivity.css";
+import { Link } from "react-router-dom";
 
 export default function CreateActivity() {
     const nombrePaises = useSelector((state) => state.countries);
@@ -116,8 +117,11 @@ export default function CreateActivity() {
             <NavBar />
             <br />
             <br />
-            <div className="container-form">
-                <form onSubmit={handleSubmit}>
+            <Link to="/Home">
+                <button className="button-back2">BACK</button>
+            </Link>
+            <div>
+                <form className="container-form" onSubmit={handleSubmit}>
                     <label>Activity Name: </label>
                     <input
                         type="text"
@@ -179,15 +183,21 @@ export default function CreateActivity() {
                             return <option value={e.name}>{e.name}</option>;
                         })}
                     </select>
-                    <button>CREATE ACTIVITY</button>
-                </form>
-
-                {input.countries.map((e) => (
-                    <div>
-                        <p> {e} </p>
-                        <button onClick={() => handleDelete(e)}>X </button>
+                    <div className="div-paises-select">
+                        {input.countries.map((e) => (
+                            <div className="container-countries-select">
+                                <p> {e} </p>
+                                <h6
+                                    className="x-delete"
+                                    onClick={() => handleDelete(e)}
+                                >
+                                    x{" "}
+                                </h6>
+                            </div>
+                        ))}
                     </div>
-                ))}
+                    <button className="button-back1">CREATE ACTIVITY</button>
+                </form>
             </div>
         </div>
     );
