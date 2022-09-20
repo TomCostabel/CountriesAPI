@@ -39,8 +39,8 @@ body {
 .boton-landing {
     border: none;
     position: absolute;
-    top: 72%;
-    right: 67%;
+    top: 63%;
+    right: 44%;
     background: none;
 
     width: 12%;
@@ -69,6 +69,25 @@ body {
     border: none;
     position: absolute;
     top: 15%;
-    right: 35%;
+    right: 36.6%;
     font-size: 20px;
+}
+.description {
+    /* box-shadow: 72px 9px 34px -10px rgba(0, 0, 0, 0.75); */
+
+    color: rgba(255, 255, 255, 0.795);
+    font-weight: 500;
+    font-size: 15px;
+    width: 200px;
+    margin-top: -200px;
+    margin-left: 360px;
+    -webkit-text-stroke: 0.3px black;
+    /* color: transparent; */
+}
+.flecha {
+    opacity: 30%;
+    margin-top: -290px;
+    width: 330px;
+    margin-left: 540px;
+    transform: rotate(-240deg);
 }
