@@ -51,9 +51,8 @@ export default function CountrieDetail() {
                 </div>
 
                 <div className="container-detail">
-                    <section>
-                        <h3>TOURIST ACTIVITIES:</h3>
-
+                    <h3>TOURIST ACTIVITIES:</h3>
+                    <section className="contenedor-general">
                         {detail[0]?.Activities.length ? (
                             detail[0]?.Activities.map((e) => {
                                 return (
