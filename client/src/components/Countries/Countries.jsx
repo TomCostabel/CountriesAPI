@@ -196,7 +196,7 @@ export default function Countries() {
                 <div className="filter_continents">
                     Filter by activity
                     <select onChange={(e) => handleFilterByAct(e)}>
-                        <option value="none"></option>
+                        <option value="Todos"></option>
                         {activities.length === 0 ? (
                             <option value="none">No activity</option>
                         ) : (

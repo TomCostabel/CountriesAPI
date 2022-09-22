@@ -23,10 +23,10 @@ export default function CreateActivity() {
     //-------------------------------------VALIDATE FUNCTION-------------------------->
 
     function validate(input) {
-        let errors = {};
+        let errores = {};
 
         if (/[^A-Za-z0-9 ]+/g.test(input.name))
-            errors.name = "* Name cannot have special characters or accents.";
+            errores.name = "* Name cannot have special characters or accents.";
 
         // if (!input.duration) errors.duration = "Campo Necesario";
 
@@ -35,8 +35,9 @@ export default function CreateActivity() {
 
         // if (!input.countries || input.countries.length === 0)
         //     errors.countries = "Campo Necesario";
+        // console.log(errores);
 
-        return errors;
+        return errores;
     }
 
     //-------------------------------------HANDLE CHANGE-------------------------->
@@ -74,7 +75,7 @@ export default function CreateActivity() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log(input);
+
         if (
             !input.name ||
             !input.difficulty ||
@@ -84,7 +85,7 @@ export default function CreateActivity() {
         ) {
             return alert("❌Please complete all fields. ");
         }
-        if (errors) {
+        if (errors.name) {
             return alert("❌No characters are allowed in 'NAME'.");
         }
         dispatch(postActivity(input));
@@ -194,7 +195,7 @@ export default function CreateActivity() {
                     <div className="div-paises-select">
                         {input.countries.map((e) => (
                             <div className="container-countries-select">
-                                <p> {e} </p>
+                                <p key={e.id}> {e} </p>
                                 <h6
                                     className="x-delete"
                                     onClick={() => handleDelete(e)}
