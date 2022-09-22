@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { useNavigate } from "react-router-dom";
+// import { Navigate, useNavigate } from "react-router-dom";
 import { getAllCountries, postActivity } from "../../redux/actions";
 import Loading from "../Loading/Loading";
 import NavBar from "../NavBar/NavBarClean.jsx";
@@ -84,6 +84,9 @@ export default function CreateActivity() {
         ) {
             return alert("❌Please complete all fields. ");
         }
+        if (errors) {
+            return alert("❌No characters are allowed in 'NAME'.");
+        }
         dispatch(postActivity(input));
         alert("✔️Activity created successfully");
         setInput({
@@ -93,6 +96,7 @@ export default function CreateActivity() {
             season: "",
             countries: [],
         });
+        // <Navigate to="/Home" replace={true} />;
         // navigate.push("/Home");
     }
     function handleDelete(e) {
@@ -180,7 +184,11 @@ export default function CreateActivity() {
                     >
                         <option></option>
                         {nombrePaises?.map((e) => {
-                            return <option value={e.name}>{e.name}</option>;
+                            return (
+                                <option key={e.id} value={e.name}>
+                                    {e.name}
+                                </option>
+                            );
                         })}
                     </select>
                     <div className="div-paises-select">

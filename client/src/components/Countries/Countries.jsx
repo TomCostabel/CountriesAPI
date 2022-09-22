@@ -101,10 +101,11 @@ export default function Countries() {
             ? setDatos(paises)
             : setDatos(
                   paises?.filter((el) => {
-                      if (
-                          el.name.toLowerCase().includes(buscador.toLowerCase())
-                      )
-                          return el;
+                      return el.name
+                          .toLowerCase()
+                          .includes(buscador.toLowerCase())
+                          ? el
+                          : null;
                   })
               );
     }, [buscador, paises]);
@@ -210,14 +211,12 @@ export default function Countries() {
             </div>
 
             <div className="container-cards">
-                {
-                    <Pagination
-                        items={allTheCountries}
-                        currentPage={currentPage}
-                        nextHandler={nextHandler}
-                        prevHandler={prevHandler}
-                    />
-                }
+                <Pagination
+                    items={allTheCountries}
+                    currentPage={currentPage}
+                    nextHandler={nextHandler}
+                    prevHandler={prevHandler}
+                />
             </div>
         </div>
     );
