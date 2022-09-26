@@ -50,6 +50,7 @@ const rootReducer = (state = initialState, action) => {
                       );
             return {
                 ...state,
+
                 countries: sortedCountries,
             };
         case FILTER_BY_CONTINENT:

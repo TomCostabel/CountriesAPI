@@ -36,10 +36,10 @@ export function getCountrieDetail(id) {
     };
 }
 
-export function sortBy(sortType) {
+export function sortBy(payload) {
     return {
         type: SET_SORT,
-        payload: sortType,
+        payload,
     };
 }
 
