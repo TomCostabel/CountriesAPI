@@ -12,6 +12,7 @@ const initialState = {
     countrieDetail: [],
     allCountries: [],
     allActivities: [],
+    // CountriesAzZa: [],
 };
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -20,6 +21,9 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 countries: action.payload,
                 allCountries: action.payload, //------> en el llamado allCountries tambien seteamos toda la info en continents para despues filtrarlos!
+                // CountriesAzZa: action.payload.sort((a, b) =>
+                //     a.name.localeCompare(b.name)
+                // ),
             };
         case GET_TOURIST_ACTIVITIES:
             return {
@@ -45,9 +49,11 @@ const rootReducer = (state = initialState, action) => {
                     ? state.countries.sort(
                           (a, b) => b.population - a.population
                       )
-                    : state.countries.sort(
+                    : action.payload === "POPULATION_DESC"
+                    ? state.countries.sort(
                           (a, b) => a.population - b.population
-                      );
+                      )
+                    : state.countries;
             return {
                 ...state,
 

@@ -30,8 +30,6 @@ const getAllCountries = async () => {
     return apiData;
 };
 
-//---------------------------------------------PROBLEMAS PARA MODULARIZAR, SOLUCIONAR.........--------------------------------------->
-
 const countryDB = async () => {
     try {
         let info = await getAllCountries();
@@ -72,7 +70,7 @@ router.get("/activities", async (req, res) => {
 
 router.get("/countries", async (req, res) => {
     const { name } = req.query;
-    name && console.log(name);
+    // name && console.log(name);
     try {
         const allCountries = await countryDB();
         if (name) {
@@ -104,7 +102,7 @@ router.get("/countries/:id", async (req, res) => {
 
 router.post("/activities", async (req, res) => {
     const { name, difficulty, season, duration, countries } = req.body;
-    console.log(req.body);
+    // console.log(req.body);
 
     try {
         let newAct = await Activity.create({
@@ -120,8 +118,6 @@ router.post("/activities", async (req, res) => {
         newAct.addCountries(countryDB);
         res.send("Activity created ");
     } catch (err) {
-        console.log(req.body);
-
         res.status(404).send("El error es", err);
     }
 });

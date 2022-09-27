@@ -95,9 +95,8 @@ export default function Countries() {
 
         setCurrentPage(0);
     };
-
     useEffect(() => {
-        buscador.length === 0
+        !buscador.length
             ? setDatos(paises)
             : setDatos(
                   paises?.filter((el) => {
