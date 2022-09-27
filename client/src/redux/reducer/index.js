@@ -57,7 +57,7 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
 
-                countries: sortedCountries,
+                countries: [...sortedCountries],
             };
         case FILTER_BY_CONTINENT:
             const allCount = state.allCountries;
