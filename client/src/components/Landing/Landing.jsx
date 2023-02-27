@@ -18,7 +18,7 @@ export default function Landing() {
             <img className="img-1" src={imagen} alt="ss" />
             <div className="text-landing">
                 <h5>EXPLORING</h5>
-                <h1> THE WORLD</h1>
+                <h1> THE WOoRLD</h1>
                 {/* <h1> WORLD </h1> */}
             </div>
             <h6 className="description">
