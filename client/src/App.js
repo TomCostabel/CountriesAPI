@@ -4,7 +4,8 @@ import Landing from "./components/Landing/Landing.jsx";
 import Countries from "./components/Countries/Countries.jsx";
 import CountrieDetail from "./components/CountrieDetail/CountrieDetail";
 import CreateActivity from "./components/CreateActivity/CreateActivity.jsx";
-
+import axios from "axios";
+axios.defaults.baseURL = "http://localhost:3001/";
 function App() {
     return (
         <Routes>
