@@ -107,3 +107,117 @@
     color: rgb(255, 251, 251);
     background-color: rgb(87, 143, 180);
 }
+
+@media (max-width: 500px) {
+    .container-card-detail {
+        margin-top: 20px;
+        margin-left: auto;
+        margin-right: auto;
+        gap: 30px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid rgb(87, 143, 180);
+        background-color: rgba(0, 0, 0, 0.445);
+        border-radius: 3px;
+        width: 90%;
+        max-width: 850px;
+        height: auto;
+        box-shadow: 22px 29px 34px -10px rgba(0, 0, 0, 0.75);
+    }
+
+    .container-detail {
+        color: wheat;
+        margin-top: 40px;
+        margin-right: 10px;
+        color: rgb(255, 255, 255);
+        width: 100%;
+        max-width: 230px;
+        height: auto;
+        font-size: 14px;
+    }
+
+    .datos-pais {
+        display: flex;
+        color: rgb(255, 254, 251);
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .imagen-detail {
+        max-width: 100%;
+        max-height: 300px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 20px;
+    }
+
+    .name-detail {
+        color: rgb(255, 255, 255);
+        font-size: 30px;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .activities-container {
+        color: white;
+        font-size: 15px;
+        font-weight: 5;
+        border-radius: 2px;
+        background-color: rgba(0, 0, 0, 0.363);
+        width: 100%;
+        max-width: 200px;
+        margin-top: 20px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .contenedor-general {
+        overflow-y: scroll;
+        max-height: 200px;
+        margin-top: 20px;
+        border-radius: 1px;
+        background-color: rgba(0, 0, 0, 0.185);
+        width: 100%;
+        max-width: 250px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .button {
+        background-color: rgb(253, 254, 255);
+        border: 2px solid rgb(87, 143, 180);
+        color: rgb(87, 143, 180);
+        height: 40px;
+        border-radius: 10px;
+        cursor: pointer;
+        width: 90px;
+        margin-top: 20px;
+        margin-left: auto;
+        margin-right: auto;
+        transition: 0.5s;
+    }
+
+    .button:hover {
+        color: rgb(248, 248, 248);
+        background-color: rgb(87, 143, 180);
+        border: 2px solid rgb(58, 114, 151);
+    }
+
+    .name-add-activity {
+        margin-top: 12px;
+        margin-left: 5px;
+    }
+
+    .button-back {
+        color: rgb(87, 143, 180);
+        background-color: rgb(255, 255, 255);
+        border-color: rgb(87, 143, 180);
+        margin-top: 20px;
+        margin-left: auto;
+        margin-right: auto;
+        height: 35px;
+        width: 80;
+    }
+}
