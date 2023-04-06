@@ -5,7 +5,9 @@ import Countries from "./components/Countries/Countries.jsx";
 import CountrieDetail from "./components/CountrieDetail/CountrieDetail";
 import CreateActivity from "./components/CreateActivity/CreateActivity.jsx";
 import axios from "axios";
-axios.defaults.baseURL = "https://countriesapi-production-9e3d.up.railway.app/";
+// axios.defaults.baseURL = "https://countriesapi-production-9e3d.up.railway.app/";
+axios.defaults.baseURL = "https://localhost:3001/";
+
 function App() {
     return (
         <Routes>
